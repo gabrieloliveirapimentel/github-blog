@@ -12,30 +12,30 @@ import {
     Item 
 } from "./styles";
 
-import profileImg from '../../assets/logo.svg'
-
-export function HeaderProfile({ profile }: IHeaderProfile) {
+export function HeaderProfile({profile} : IHeaderProfile) {
     const theme = useTheme();
+
+    console.log('profile', profile)
     
     return (
         <Container>
-            <img src={profileImg} alt="Profile" />
+            <img src={profile.avatar_url} alt="Profile" />
             <Content>
                 <Item>
                     <Name>
                         <h2>{profile.name}</h2>
-                        <a>
+                        <a href={profile.html_url ? profile.html_url : ''} target="_blank">
                             <span>Github</span>
                             <FaArrowUpRightFromSquare fontSize={12} />
                         </a>
                     </Name>
-                    <Description>{profile.description}</Description>
+                    <Description>{profile.bio}</Description>
                 </Item>
                 <Item>
                     <Links>
                         <Link>
                             <FaGithub fontSize={16} color={theme['base-label']} />
-                            <span>gabrieloliveirapimentel</span>
+                            <span>{profile.login}</span>
                         </Link>
                         <Link>
                             <FaBuilding fontSize={16} color={theme['base-label']} />
@@ -43,7 +43,7 @@ export function HeaderProfile({ profile }: IHeaderProfile) {
                         </Link>
                         <Link>
                             <FaUserGroup fontSize={16} color={theme['base-label']} />
-                            <span>32 Seguidores</span>
+                            <span>{profile.followers > 1 ? profile.followers + ' Seguidores' : profile.followers + ' Seguidor'}</span>
                         </Link>
                     </Links>
                 </Item>

@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { Card } from "../../components/Card";
 import { HeaderProfile } from "../../components/HeaderProfile";
 import { SearchForm } from "./components/SearchForm";
@@ -7,12 +8,12 @@ import {
     Content, 
     List 
 } from "./styles";
+import { ProfileContext } from "../../context/types";
 
 export function Blog() {
-    const profile = {
-        name: 'Gabriel Oliveira Pimentel',
-        description: 'Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu viverra massa quam',
-    }
+    const { profile } = useContext(ProfileContext)
+    
+    console.log(profile)
 
     return (
         <div>
