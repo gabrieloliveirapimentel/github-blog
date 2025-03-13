@@ -11,9 +11,7 @@ import {
 import { ProfileContext } from "../../context/types";
 
 export function Blog() {
-    const { profile } = useContext(ProfileContext)
-    
-    console.log(profile)
+    const { profile, issues, issuesCount} = useContext(ProfileContext)
 
     return (
         <div>
@@ -21,16 +19,13 @@ export function Blog() {
             <Container>
                 <Content>
                     <h2>Publicações</h2>
-                    <span>6 publicações</span>
+                    <span>{issuesCount > 1 ? issuesCount + ' publicações' : issuesCount +' publicação'} </span>
                 </Content>
                 <SearchForm />
                 <List>
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
+                    {issues.map(issue => (
+                        <Card issue={issue} key={issue.number} />
+                    ))}
                 </List>
             </Container>
         </div>

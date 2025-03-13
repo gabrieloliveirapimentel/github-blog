@@ -34,7 +34,7 @@ export const Container = styled.div`
 export const Content = styled.div`
     display: flex;
     width: 100%;
-    
+
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
@@ -73,6 +73,7 @@ export const Name = styled.div`
         font-size: 0.9rem;
         font-weight: 700;
         text-transform: uppercase;
+        text-decoration: none;
 
         &:hover {
             border-bottom: 2px solid;
