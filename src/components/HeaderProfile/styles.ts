@@ -14,6 +14,12 @@ export const Container = styled.div`
     border-radius: 10px;
     background-color: ${props => props.theme['base-profile']};
 
+    img {
+        width: 148px;
+        height: 148px;
+        border-radius: 8px;
+    }
+
     @media (max-width: 864px) {
         margin: -5rem  24px 0 24px;
     }
@@ -27,6 +33,8 @@ export const Container = styled.div`
 
 export const Content = styled.div`
     display: flex;
+    width: 100%;
+    
     flex-direction: column;
     justify-content: space-between;
     text-align: center;

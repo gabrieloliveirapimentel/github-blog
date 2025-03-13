@@ -1,7 +1,11 @@
 export interface IHeaderProfile {
     profile: {
         name: string
-        description: string
+        bio: string
+        login: string
+        avatar_url: string
+        html_url: string
+        followers: number
     }
 }
 
@@ -12,6 +16,54 @@ export interface IHeaderPost {
     comments: number
 }
 
+export interface IProfile {
+    login: string;
+    id?: number;
+    node_id?: string;
+    avatar_url: string;
+    url: string;
+    html_url: string;
+    followers_url: string;
+    following_url: string;
+    gists_url: string;
+    starred_url: string;
+    subscriptions_url: string;
+    organizations_url: string;
+    repos_url: string;
+    events_url: string;
+    name: string;
+    company?: string;
+    location?: string;
+    bio?: string;
+    followers?: number;
+    following?: number;
+}
 
+export interface IIssueSearch {
+    total_count: number;
+    incomplete_results: boolean;
+    items: IIssue[];
+}
+
+export interface IIssue {
+    url: string;
+    repository_url: string;
+    labels_url: string;
+    comments_url: string;
+    events_url: string;
+    html_url: string;
+    number: number;
+    title: string;
+    user: IProfile;
+    comments: number;
+    body: string;
+}
+
+export interface IProfileContextType {
+    profile: IProfile;
+    issues: IIssue[];
+    fetchProfile: (query?: string) => Promise<void>;
+    fetchIssues: (query?: string) => Promise<void>;
+}
 
 
