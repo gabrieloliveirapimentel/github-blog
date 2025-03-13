@@ -14,8 +14,7 @@ import {
 
 export function HeaderProfile({profile} : IHeaderProfile) {
     const theme = useTheme();
-
-    console.log('profile', profile)
+    const followersNumber = profile.followers ? profile.followers + ' Seguidores' : '0 Seguidores'
     
     return (
         <Container>
@@ -43,7 +42,7 @@ export function HeaderProfile({profile} : IHeaderProfile) {
                         </Link>
                         <Link>
                             <FaUserGroup fontSize={16} color={theme['base-label']} />
-                            <span>{profile.followers > 1 ? profile.followers + ' Seguidores' : profile.followers + ' Seguidor'}</span>
+                            <span>{followersNumber}</span>
                         </Link>
                     </Links>
                 </Item>

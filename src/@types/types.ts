@@ -1,11 +1,11 @@
 export interface IHeaderProfile {
     profile: {
         name: string
-        bio: string
+        bio?: string
         login: string
         avatar_url: string
         html_url: string
-        followers: number
+        followers?: number
     }
 }
 
@@ -14,6 +14,16 @@ export interface IHeaderPost {
     author: string
     date: string
     comments: number
+}
+
+export interface ICardProps {
+    issue: {
+        title: string;
+        created_at: string;
+        body: string;
+        html_url: string;
+        number: number;
+    }
 }
 
 export interface IProfile {
@@ -39,14 +49,9 @@ export interface IProfile {
     following?: number;
 }
 
-export interface IIssueSearch {
-    total_count: number;
-    incomplete_results: boolean;
-    items: IIssue[];
-}
-
 export interface IIssue {
     url: string;
+    created_at: string;
     repository_url: string;
     labels_url: string;
     comments_url: string;
@@ -62,7 +67,7 @@ export interface IIssue {
 export interface IProfileContextType {
     profile: IProfile;
     issues: IIssue[];
-    fetchProfile: (query?: string) => Promise<void>;
+    issuesCount: number;
     fetchIssues: (query?: string) => Promise<void>;
 }
 
