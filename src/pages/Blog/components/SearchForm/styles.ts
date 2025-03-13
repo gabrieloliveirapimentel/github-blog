@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
-export const SearchFormContainer = styled.form`
+export const Container = styled.form`
     display: flex;
     gap: 1rem;
 
     input {
         flex: 1;
         padding: 1rem;
+
+        height: 44px;
         
         border-radius: 6px;
         border: 1px solid;

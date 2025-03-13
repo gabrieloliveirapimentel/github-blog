@@ -2,54 +2,33 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     display: flex;
+    flex-direction: column;
     margin: 0 auto;
-    gap: 2rem;
 
-    padding: 40px 32px;
+    padding: 32px;
     margin-top: -5rem;
 
     max-width: 864px;
-    height: 212px;
 
     border-radius: 10px;
     background-color: ${props => props.theme['base-profile']};
+
 
     @media (max-width: 864px) {
         margin: -5rem  24px 0 24px;
     }
 
     @media (max-width: 768px) {
-        flex-direction: column;
         align-items: center;
         height: auto;
     }
 `
 
-export const Content = styled.div`
+export const Heading = styled.div`
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    text-align: center;
-
-    @media (min-width: 768px) {
-        text-align: left;
-    }
-`
-
-export const Description = styled.div``
-export const Item = styled.div``
-
-export const Name = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 8px;
-
-    h2 {
-        font-size: 1.5rem;
-        color: ${props => props.theme['base-title']};
-    }
+    
+    margin-bottom: 1.4rem;
 
     a {
         display: flex;
@@ -65,6 +44,7 @@ export const Name = styled.div`
         font-size: 0.9rem;
         font-weight: 700;
         text-transform: uppercase;
+        text-decoration: none;
 
         &:hover {
             border-bottom: 2px solid;
@@ -74,17 +54,19 @@ export const Name = styled.div`
             margin-top: 1px;
         }
     }
+`
 
-    @media (min-width: 768px) {
-        flex-direction: row;
-        align-items: flex-start;
-    }
+export const Title = styled.h2`
+    font-size: 1.5rem;
+    color: ${props => props.theme['base-title']};
 `
 
 export const Links = styled.div`
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    margin-top: 1rem;
 
     @media (min-width: 768px) {
         flex-direction: row;
@@ -98,8 +80,8 @@ export const Link = styled.div`
     justify-content: center;
 
     gap: 8px;
-
+    
     span {
-        color: ${props => props.theme['base-subtitle']};
+        color: ${props => props.theme['base-span']};
     }
 `

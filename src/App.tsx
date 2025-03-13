@@ -1,15 +1,17 @@
 import { ThemeProvider } from 'styled-components'
-import { Issues } from './pages/Issues'
+import { Outlet } from 'react-router-dom'
+
 import { defaultTheme } from './styles/themes/default'
 import { GlobalStyle } from './styles/global'
+import { Header } from './components/Header'
 
-function App() {
+export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle />
-      <Issues />
+      <Header />
+      <Outlet />
     </ThemeProvider>
   )
 }
 
-export default App
