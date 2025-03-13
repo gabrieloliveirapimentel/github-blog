@@ -25,7 +25,7 @@ export function ProfileProvider({ children}: IProfileProviderProps) {
         const response = await api.get(`search/issues?q=${query} repo:gabrieloliveirapimentel/github-blog`)
         
         setIssuesCount(response.data.total_count)
-        setIssues(state => [...state, ...response.data.items])
+        setIssues(response.data.items)
     }
 
     useEffect(() => {

@@ -23,9 +23,12 @@ export function Blog() {
                 </Content>
                 <SearchForm />
                 <List>
-                    {issues.map(issue => (
-                        <Card issue={issue} key={issue.number} />
-                    ))}
+                    {issues.length > 0 ? 
+                        issues.map(issue => (
+                            <Card issue={issue} key={issue.number} />
+                        )) : 
+                        <span>Nenhuma publicação encontrada</span>
+                    }
                 </List>
             </Container>
         </div>

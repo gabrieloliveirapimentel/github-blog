@@ -14,11 +14,17 @@ export const Heading = styled.div`
 
     gap: 16px;
 
-    h3 {
+    a {
         line-height: 1.8rem;
+        text-decoration: none;
+
         font-size: 1.2rem;
         font-weight: 700;
         color: ${props => props.theme["base-title"]};
+
+        &:hover {
+            color: ${props => props.theme["base-text"]};
+        }
     }
     
     span {

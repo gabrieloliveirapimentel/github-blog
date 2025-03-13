@@ -7,7 +7,7 @@ export function Card({ issue }: ICardProps) {
     return (
         <Container>
             <Heading>
-                <h3>{issue.title}</h3>
+                <a href={`/posts/${issue.number}`}>{issue.title}</a>
                 <span>
                     {formatDistanceToNow(
                         new Date(issue.created_at), {
@@ -19,8 +19,6 @@ export function Card({ issue }: ICardProps) {
             <Description>
                 {issue.body}
             </Description>
-
-
         </Container>
     )
 }
