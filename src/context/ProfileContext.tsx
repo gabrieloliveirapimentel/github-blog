@@ -1,38 +1,47 @@
 import { useCallback, useEffect, useState } from "react";
 import { IIssue, IProfile } from "../@types/types";
 import { IProfileProviderProps, ProfileContext } from "./types";
-import { api } from "../lib/axios";
+import { GetIssueById, GetIssues, GetIssuesByUser, GetUser } from "../api/fetch";
 
 export function ProfileProvider({ children}: IProfileProviderProps) {
     const [profile, setProfile] = useState<IProfile>({} as IProfile)
     const [issues, setIssues] = useState<IIssue[]>([])
     const [issue, setIssue] = useState<IIssue>({} as IIssue)
-    const [issuesCount, setIssuesCount] = useState(0)
 
     const fetchProfile = useCallback(async () => {
-        const response = await api.get('users/gabrieloliveirapimentel')
-        
-        setProfile(response.data)
+        try {
+            const response = await GetUser() 
+            setProfile(response.data)
+        } catch (error) {
+            console.error('Failed to fetch profile:', error)
+        }
     }, [])
 
     const fetchIssuesByUser = async () => {
-        const response = await api.get('search/issues?q=user:gabrieloliveirapimentel')
-        
-        setIssuesCount(response.data.total_count)
-        setIssues(response.data.items)
+        try {
+            const response = await GetIssuesByUser()
+            setIssues(response.data.items)
+        } catch (error) {
+            console.error('Failed to fetch issues by user:', error)
+        }
     }
 
     const fetchIssues = async (query?: string) => {
-        const response = await api.get(`search/issues?q=${query} repo:gabrieloliveirapimentel/github-blog`)
-        
-        setIssuesCount(response.data.total_count)
-        setIssues(response.data.items)
+        try {
+            const response = await GetIssues(query)
+            setIssues(response.data.items)
+        } catch (error) {
+            console.error('Failed to fetch issues:', error)
+        }
     }
 
     const fetchIssueById = useCallback( async (idIssue: number) => {
-        const response = await api.get(`/repos/gabrieloliveirapimentel/github-blog/issues/${idIssue}`)
-
-        setIssue(response.data)
+        try {
+            const response = await GetIssueById(idIssue)
+            setIssue(response.data)
+        } catch (error) {
+            console.error('Failed to fetch issue by id:', error)
+        }
     }
     ,[])
 
@@ -45,7 +54,7 @@ export function ProfileProvider({ children}: IProfileProviderProps) {
     }, [])
 
     return (
-        <ProfileContext.Provider value={{profile, issues, issue, issuesCount, fetchIssues, fetchIssueById}}>
+        <ProfileContext.Provider value={{profile, issues, issue, fetchIssues, fetchIssueById}}>
             {children}
         </ProfileContext.Provider>
     )
