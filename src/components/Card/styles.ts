@@ -6,6 +6,13 @@ export const Container = styled.div`
 
     width: 416px;
     padding: 32px;
+    
+    @media (max-width: 864px) {
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+    }
 `
 
 export const Heading = styled.div`

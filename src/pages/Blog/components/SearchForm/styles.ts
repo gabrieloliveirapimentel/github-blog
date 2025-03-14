@@ -21,4 +21,8 @@ export const Container = styled.form`
             color: ${props => props.theme['base-label']};
         }
     }
+
+    @media (max-width: 864px) {
+        margin: 0 2rem 0;
+    }
 `

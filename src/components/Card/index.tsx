@@ -2,6 +2,7 @@ import { formatDistanceToNow } from "date-fns";
 import { ICardProps } from "../../@types/types";
 import { Container, Description, Heading } from "./styles";
 import { ptBR } from "date-fns/locale";
+import ReactMarkdown from "react-markdown";
 
 export function Card({ issue }: ICardProps) {
     return (
@@ -17,7 +18,9 @@ export function Card({ issue }: ICardProps) {
                 </span>
             </Heading>
             <Description>
+                <ReactMarkdown>
                 {issue.body}
+                </ReactMarkdown>
             </Description>
         </Container>
     )

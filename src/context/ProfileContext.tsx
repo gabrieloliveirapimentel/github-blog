@@ -6,6 +6,7 @@ import { api } from "../lib/axios";
 export function ProfileProvider({ children}: IProfileProviderProps) {
     const [profile, setProfile] = useState<IProfile>({} as IProfile)
     const [issues, setIssues] = useState<IIssue[]>([])
+    const [issue, setIssue] = useState<IIssue>({} as IIssue)
     const [issuesCount, setIssuesCount] = useState(0)
 
     const fetchProfile = useCallback(async () => {
@@ -28,6 +29,13 @@ export function ProfileProvider({ children}: IProfileProviderProps) {
         setIssues(response.data.items)
     }
 
+    const fetchIssueById = useCallback( async (idIssue: number) => {
+        const response = await api.get(`/repos/gabrieloliveirapimentel/github-blog/issues/${idIssue}`)
+
+        setIssue(response.data)
+    }
+    ,[])
+
     useEffect(() => {
         fetchProfile()
     },[fetchProfile])
@@ -37,7 +45,7 @@ export function ProfileProvider({ children}: IProfileProviderProps) {
     }, [])
 
     return (
-        <ProfileContext.Provider value={{profile, issues, issuesCount, fetchIssues}}>
+        <ProfileContext.Provider value={{profile, issues, issue, issuesCount, fetchIssues, fetchIssueById}}>
             {children}
         </ProfileContext.Provider>
     )

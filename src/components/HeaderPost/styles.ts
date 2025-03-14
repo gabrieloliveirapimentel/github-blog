@@ -54,6 +54,10 @@ export const Heading = styled.div`
             margin-top: 1px;
         }
     }
+
+    @media (max-width: 864px) {
+        gap: 16px;
+    }
 `
 
 export const Title = styled.h2`
