@@ -72,7 +72,6 @@ export interface IProfileContextType {
     profile: IProfile;
     issues: IIssue[];
     issue: IIssue;
-    issuesCount: number;
     fetchIssues: (query?: string) => Promise<void>;
     fetchIssueById: (idIssue: number) => Promise<void>;
 }
