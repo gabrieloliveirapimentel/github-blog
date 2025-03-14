@@ -11,7 +11,7 @@ import {
 import { ProfileContext } from "../../context/types";
 
 export function Blog() {
-    const { profile, issues, issuesCount} = useContext(ProfileContext)
+    const { profile, issues} = useContext(ProfileContext)
 
     return (
         <div>
@@ -19,7 +19,7 @@ export function Blog() {
             <Container>
                 <Content>
                     <h2>Publicações</h2>
-                    <span>{issuesCount > 1 ? issuesCount + ' publicações' : issuesCount +' publicação'} </span>
+                    <span>{issues.length > 1 ? issues.length + ' publicações' : issues.length +' publicação'} </span>
                 </Content>
                 <SearchForm />
                 <List>
