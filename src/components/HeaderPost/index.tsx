@@ -8,11 +8,14 @@ import {
     Links, 
     Link, 
 } from "./styles";
+import { IIssueById } from "../../@types/types";
+import { formatDistanceToNow } from "date-fns";
+import { ptBR } from "date-fns/locale";
 
 
-export function HeaderPost() {
+export function HeaderPost({ issue }: IIssueById) {
     const theme = useTheme();
-    
+
     return (
         <Container>
             <Heading>
@@ -20,24 +23,31 @@ export function HeaderPost() {
                     <FaChevronLeft fontSize={12} />
                     <span>Voltar</span>
                 </a>
-                <a>
+                <a href={issue.html_url} target='_blank'>
                     <span>Ver no Github</span>
                     <FaArrowUpRightFromSquare fontSize={12} />
                 </a>
             </Heading>
-            <Title>JavaScript data types and data structures</Title>
+            <Title>{issue.title}</Title>
             <Links>
                 <Link>
                     <FaGithub fontSize={16} color={theme['base-label']} />
-                    <span>gabrieloliveirapimentel</span>
+                    <span>{issue.user?.login}</span>
                 </Link>
                 <Link>
                     <FaCalendarDay fontSize={16} color={theme['base-label']} />
-                    <span>Há 1 dia</span>
+                    <span>
+                        {issue.created_at &&
+                        formatDistanceToNow(
+                            new Date(issue.created_at), {
+                            addSuffix: true,
+                            locale: ptBR
+                        })}
+                    </span>
                 </Link>
                 <Link>
                     <FaComment fontSize={16} color={theme['base-label']} />
-                    <span>5 comentários</span>
+                    <span>{issue.comments + ' Comentários'}</span>
                 </Link>
             </Links>
         </Container>

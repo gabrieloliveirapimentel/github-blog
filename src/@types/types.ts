@@ -49,6 +49,10 @@ export interface IProfile {
     following?: number;
 }
 
+export interface IIssueById {
+    issue: IIssue;
+}
+
 export interface IIssue {
     url: string;
     created_at: string;
@@ -67,8 +71,10 @@ export interface IIssue {
 export interface IProfileContextType {
     profile: IProfile;
     issues: IIssue[];
+    issue: IIssue;
     issuesCount: number;
     fetchIssues: (query?: string) => Promise<void>;
+    fetchIssueById: (idIssue: number) => Promise<void>;
 }
 
 
